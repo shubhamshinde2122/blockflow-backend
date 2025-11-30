@@ -42,6 +42,10 @@ public class Order {
     @Column(nullable = false)
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @PrePersist
     protected void onCreate() {
         if (orderDate == null) {

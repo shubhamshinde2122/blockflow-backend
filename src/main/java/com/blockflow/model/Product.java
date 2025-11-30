@@ -107,4 +107,8 @@ public class Product {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

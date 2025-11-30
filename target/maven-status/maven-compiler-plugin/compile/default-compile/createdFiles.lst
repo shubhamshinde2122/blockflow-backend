@@ -2,6 +2,7 @@ com\blockflow\repository\ProductRepository.class
 com\blockflow\service\impl\OrderServiceImpl.class
 com\blockflow\service\OrderService.class
 com\blockflow\model\Product.class
+com\blockflow\controller\AdminController.class
 com\blockflow\model\Order.class
 com\blockflow\model\Product$ProductBuilder.class
 com\blockflow\filter\JwtFilter.class
@@ -9,11 +10,13 @@ com\blockflow\model\Order$OrderBuilder.class
 com\blockflow\dto\ProductRequest$ProductRequestBuilder.class
 com\blockflow\dto\ProductRequest.class
 com\blockflow\controller\HelloController.class
+com\blockflow\dto\AuthResponse.class
 com\blockflow\repository\OrderRepository.class
 com\blockflow\config\SecurityConfig.class
 com\blockflow\dto\ProductResponse$ProductResponseBuilder.class
 com\blockflow\BlockflowBackendApplication.class
 com\blockflow\util\JwtUtil.class
+com\blockflow\service\UserService.class
 com\blockflow\exception\GlobalExceptionHandler.class
 com\blockflow\controller\AuthController.class
 com\blockflow\controller\ProductController.class
@@ -21,6 +24,7 @@ com\blockflow\service\impl\ProductServiceImpl.class
 com\blockflow\exception\ResourceNotFoundException.class
 com\blockflow\model\User.class
 com\blockflow\mapper\ProductMapper.class
+com\blockflow\model\User$Role.class
 com\blockflow\dto\ProductResponse.class
 com\blockflow\service\ProductService.class
 com\blockflow\controller\OrderController.class
