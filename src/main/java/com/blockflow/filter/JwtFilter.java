@@ -13,13 +13,15 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private com.blockflow.repository.UserRepository userRepository;
 
     @Override
     protected void doFilterInternal(@org.springframework.lang.NonNull HttpServletRequest request,
@@ -38,12 +40,16 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, null,
-                    new ArrayList<>());
-            authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            SecurityContextHolder.getContext().setAuthentication(authToken);
+            com.blockflow.model.User user = userRepository.findByUsername(username).orElse(null);
+
+            if (user != null) {
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                        user, null, user.getAuthorities());
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+            }
         }
 
         filterChain.doFilter(request, response);
     }
-}
+} // End of class

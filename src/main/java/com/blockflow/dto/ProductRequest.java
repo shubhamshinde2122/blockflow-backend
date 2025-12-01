@@ -38,4 +38,4 @@ public class ProductRequest {
     @NotNull(message = "Weight is required")
     @Positive(message = "Weight must be positive")
     private BigDecimal weight;
-}
+} // End of class

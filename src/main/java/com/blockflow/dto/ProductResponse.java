@@ -25,4 +25,4 @@ public class ProductResponse {
     private BigDecimal weight;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-}
+} // End of class

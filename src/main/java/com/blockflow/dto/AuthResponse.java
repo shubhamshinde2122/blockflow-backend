@@ -14,4 +14,4 @@ public class AuthResponse {
     private String firstName;
     private String lastName;
     private String role;
-}
+} // End of class

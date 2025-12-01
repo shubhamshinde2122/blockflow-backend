@@ -1,0 +1,14 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.settings/
+.classpath
+.project
+.vscode/
+*.iml
+.idea/
+hs_err_pid*
+replay_pid*

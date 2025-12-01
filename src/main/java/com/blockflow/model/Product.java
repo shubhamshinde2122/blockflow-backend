@@ -3,6 +3,7 @@ package com.blockflow.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
@@ -79,6 +80,18 @@ public class Product {
     private BigDecimal weight;
 
     /**
+     * Category of the product.
+     */
+    private String category;
+
+    /**
+     * Number of times the product has been viewed.
+     */
+    @Builder.Default
+    @Column(nullable = false)
+    private Long viewCount = 0L;
+
+    /**
      * Timestamp when the product was created.
      * Auto-generated.
      */
@@ -100,9 +113,6 @@ public class Product {
         updatedAt = LocalDateTime.now();
     }
 
-    /**
-     * Updates the timestamp before updating.
-     */
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();

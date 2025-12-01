@@ -58,4 +58,4 @@ public class ProductMapper {
             product.setWeight(request.getWeight());
         }
     }
-}
+} // End of class

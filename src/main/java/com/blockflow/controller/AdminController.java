@@ -59,4 +59,4 @@ public class AdminController {
         userService.saveUser(user);
         return ResponseEntity.ok("User account enabled");
     }
-}
+} // End of class

@@ -55,4 +55,4 @@ public class Order {
             status = "NEW";
         }
     }
-}
+} // End of class

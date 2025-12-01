@@ -31,6 +31,12 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = true)
+    private String firstName;
+
+    @Column(nullable = true)
+    private String lastName;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.USER;
@@ -38,7 +44,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private Boolean enabled = true;
 
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false, nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public enum Role {
@@ -69,4 +75,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
-}
+} // End of class

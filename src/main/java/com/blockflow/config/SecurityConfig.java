@@ -31,8 +31,8 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(request -> {
                     org.springframework.web.cors.CorsConfiguration config = new org.springframework.web.cors.CorsConfiguration();
-                    config.setAllowedOrigins(java.util.Collections.singletonList("*")); // Allow all for now, or
-                                                                                        // restrict to frontend URL
+                    config.setAllowedOrigins(java.util.Arrays.asList("http://localhost:3000",
+                            "https://blockflow-frontend-mygg.vercel.app"));
                     config.setAllowedMethods(java.util.Collections.singletonList("*"));
                     config.setAllowedHeaders(java.util.Collections.singletonList("*"));
                     return config;
@@ -40,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/h2-console/**").permitAll() // Allow H2 Console
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/orders/**").permitAll()
                         // Admin endpoints
@@ -47,6 +48,8 @@ public class SecurityConfig {
                         // Protected endpoints (POST, PUT, DELETE require authentication)
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // Required for H2
+                                                                                                  // Console
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
