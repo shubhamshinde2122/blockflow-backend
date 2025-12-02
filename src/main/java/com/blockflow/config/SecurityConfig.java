@@ -31,9 +31,9 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(request -> {
                     org.springframework.web.cors.CorsConfiguration config = new org.springframework.web.cors.CorsConfiguration();
-                    config.setAllowedOrigins(java.util.Arrays.asList("http://localhost:3000",
-                            "https://blockflow-frontend-mygg.vercel.app"));
-                    config.setAllowedMethods(java.util.Collections.singletonList("*"));
+                    config.setAllowedOriginPatterns(java.util.Collections.singletonList("*")); // Allow ALL origins
+                    config.setAllowCredentials(true);
+                    config.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     config.setAllowedHeaders(java.util.Collections.singletonList("*"));
                     return config;
                 }))
